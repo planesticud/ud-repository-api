@@ -8,7 +8,8 @@ const apiController = module.exports
 
 
 apiController.callback = async (req, res) => {
-  const { user: { emails, displayName } } = req
+  const { user: { emails, displayName, token } } = req
+  log.info(token)
   const email = emails[0].value
   const user = await usersClient.getUsers(email)
   if (user.length) {

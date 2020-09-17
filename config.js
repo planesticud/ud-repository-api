@@ -4,6 +4,7 @@ const {
     SECRET,
     CALLBACK_URL,
     USERS_URL,
+    GOOGLE_URL_TOKEN
 } = process.env
 
 module.exports={
@@ -11,5 +12,6 @@ module.exports={
     clientId: CLIENT_ID,
     secret: SECRET,
     callback: CALLBACK_URL,
-    usersUrl: USERS_URL
+    usersUrl: USERS_URL,
+    googleUrlToken: GOOGLE_URL_TOKEN
 }
