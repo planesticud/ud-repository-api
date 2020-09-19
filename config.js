@@ -4,7 +4,11 @@ const {
     SECRET,
     CALLBACK_URL,
     USERS_URL,
-    GOOGLE_URL_TOKEN
+    FILES_URL,
+    GOOGLE_URL_TOKEN,
+    BUCKET_NAME,
+    ACL,
+    URL_S3_BASE
 } = process.env
 
 module.exports={
@@ -13,5 +17,9 @@ module.exports={
     secret: SECRET,
     callback: CALLBACK_URL,
     usersUrl: USERS_URL,
-    googleUrlToken: GOOGLE_URL_TOKEN
+    filesUrl: FILES_URL,
+    googleUrlToken: GOOGLE_URL_TOKEN,
+    bucketName: BUCKET_NAME,
+    acl: ACL,
+    urlS3Base: URL_S3_BASE
 }

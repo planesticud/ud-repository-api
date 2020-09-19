@@ -6,7 +6,6 @@ const logger = require('../utils/logger')
 const usersClient = module.exports
 const log = logger.getLogger('usersClient')
 
-
 usersClient.getUsers = async (email) => {
     log.info(`getUsers email=${email} `)     
     const { data } = await axios.get(`${usersUrl}/users`, { params: { email } })
@@ -16,5 +15,17 @@ usersClient.getUsers = async (email) => {
 usersClient.addUsers = async (user) => {
     log.info(`addUsers user=${JSON.stringify(user)} `)     
     const { data } = await axios.post(`${usersUrl}/users`, user)
+    return(data)
+  }
+
+  usersClient.updateUsers = async (id) => {
+    log.info(`updateUsers id=${id} `)     
+    const { data } = await axios.put(`${usersUrl}/users`, { params: { id } })
+    return(data)
+  }
+
+  usersClient.deleteUsers = async (id) => {
+    log.info(`deleteUsers id=${id} `)     
+    const { data } = await axios.delete(`${usersUrl}/users`, { params: { id } })
     return(data)
   }

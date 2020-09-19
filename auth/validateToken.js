@@ -24,7 +24,7 @@ module.exports = wrap(async (req,res, next) => {
 
 
 const validToken = async (token) => {
-    log.info(`validToken tokem=${token} `)     
+    log.info(`validToken token=${token} `)     
     const { data } = await axios.get(`${googleUrlToken}/tokeninfo`, { params: { access_token: token } })
     return(data)
   }

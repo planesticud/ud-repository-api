@@ -3,6 +3,8 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const passport = require('passport')
+const fileUpload = require('express-fileupload')
+
 const googleStratergy = require('./auth/googleStrategy')
 
 const logger = require('./utils/logger')
@@ -17,6 +19,9 @@ app.use(cors())
 app.use(passport.initialize())
 
 app.use(bodyParser.json())
+app.use(fileUpload({
+    createParentPath: true
+}));
 
 app.use(routes)
 
