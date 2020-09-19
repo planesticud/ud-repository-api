@@ -13,11 +13,11 @@ services:
         - udrepository
      labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ud-repository-api.rule=Host(`udrepository.com`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.ud-repository-api.rule=Host(`apirepository.damillano.com`) && PathPrefix(`/api`)"
       - "traefik.http.routers.ud-repository-api.middlewares=ud-repository-api-stripprefix"
       - "traefik.http.middlewares.ud-repository-api-stripprefix.stripprefix.prefixes=/api"
-      #- "traefik.http.routers.ud-repository-api.tls=true"
-      #- "traefik.http.routers.ud-repository-api.tls.certresolver=le"
+      - "traefik.http.routers.ud-repository-api.tls=true"
+      - "traefik.http.routers.ud-repository-api.tls.certresolver=le"
       - "traefik.http.services.ud-repository-api.loadbalancer.server.port=80"           
 networks:
   udrepository:
