@@ -38,4 +38,8 @@ router.get(routers.HEALTH, wrap(async (req, res) => {
     res.status(OK).json({ message: 'OK' })
   }))
 
+  router.get("/testci", wrap(async (req, res) => {
+    res.status(OK).json({ message: 'CI' })
+  }))
+
 module.exports = router
