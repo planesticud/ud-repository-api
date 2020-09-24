@@ -31,7 +31,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/386
           push: true
-          tags: damillano93/ud-repository-files-ms:latest
+          tags: ${{ github.repository }}:latest
       - 
         name: send custom message with args
         uses: appleboy/telegram-action@master
