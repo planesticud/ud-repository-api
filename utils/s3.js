@@ -1,6 +1,8 @@
 const AWS = require('aws-sdk')
 const fs = require('fs')
 const mime = require('mime-types')
+const rimraf = require('rimraf')
+
 const {
     bucketName,
     urlS3Base,
@@ -29,6 +31,7 @@ const uploadFile = (fileName,folder=null) => {
 
     s3.putObject(params, (err, data)=> {
         if (err) { throw err }
+        rimraf(`./tmp/${fileName}`,  ()=> { console.log("done"); });
     })
     return `${urlS3Base}/${realName}`
 }

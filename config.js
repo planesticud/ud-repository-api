@@ -10,6 +10,17 @@ const {
     ACL,
     URL_S3_BASE
 } = process.env
+const accessKeyId = process.env.AWS_ACCESS_KEY_ID
+const secretAccessKey  = process.env.AWS_SECRET_ACCESS_KEY
+const  region = process.env.AWS_DEFAULT_REGION
+const bucket = process.env.BUCKET_NAME
+
+const credentials = {
+  accessKeyId,
+  secretAccessKey,
+  region,
+  bucket
+}
 
 module.exports={
     port: PORT,
@@ -21,5 +32,6 @@ module.exports={
     googleUrlToken: GOOGLE_URL_TOKEN,
     bucketName: BUCKET_NAME,
     acl: ACL,
-    urlS3Base: URL_S3_BASE
+    urlS3Base: URL_S3_BASE,
+    credentials
 }

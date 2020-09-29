@@ -2,9 +2,12 @@ const { CREATED, BAD_REQUEST } = require('http-status-codes')
 
 const logger = require('../utils/logger')
 const { uploadFile } = require('../utils/s3')
+const { uploadScorm } = require('../utils/s3Folder')
 const { filesClient } = require('../client')
+const { urlS3Base } = require('../config')
 const filesController = module.exports
 const log = logger.getLogger('filesController')
+const mime = require('mime-types')
 
 filesController.listFiles = async (req, res) => {
     const { query: { email } } = req
@@ -28,12 +31,25 @@ filesController.uploadFiles = async (req, res) => {
     log.info('createFiles')
    
     if(req.files){
+        
         const file = req.files.file
+
         log.info(`upload file=${file.name}`)
         await file.mv(`./tmp/${file.name}`)
-        const url = uploadFile(file.name)
-        log.info(`upload file to s3=${url}`)
+        const fileType = mime.lookup(file.name)
+        log.info(`file type= ${fileType}`)
+        let url = ''
+        if(fileType === 'application/zip'){
+            url = await uploadScorm(file.name, './tmp')
+            //url= `${urlS3Base}/${file.name.slice(0, -4)}/story.html`
+            log.info(`upload file to s3=${url}`)
         res.json({url: url})
+        }else{
+            url = uploadFile(file.name)
+            log.info(`upload file to s3=${url}`)
+            res.json({url: url})
+        }
+      
     }else{
         log.error('file not found')
         res.status(400).json({error: 'file_not_found'})
