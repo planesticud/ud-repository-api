@@ -40,8 +40,8 @@ filesController.uploadFiles = async (req, res) => {
         log.info(`file type= ${fileType}`)
         let url = ''
         if(fileType === 'application/zip'){
-            url = await uploadScorm(file.name, './tmp')
-            //url= `${urlS3Base}/${file.name.slice(0, -4)}/story.html`
+            uploadScorm(file.name, './tmp')
+            url= `${urlS3Base}/${file.name.slice(0, -4)}/story.html`
             log.info(`upload file to s3=${url}`)
         res.json({url: url})
         }else{
