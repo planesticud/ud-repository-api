@@ -86,3 +86,178 @@ filesController.deleteGeneral = async (req, res) => {
     const general = await filesClient.deleteGeneral(id)
     res.json(general)
 }
+
+
+filesController.listLifecycle = async (req, res) => {
+    const { query } = req
+    const lifecycle = await filesClient.getLifecycle(query)
+    res.json(lifecycle)
+}
+
+filesController.addLifecycle = async (req, res) => {
+    const { body } = req
+    const lifecycle = await filesClient.addLifecycle(body)
+    res.json(lifecycle)
+}
+
+filesController.updateLifecycle = async (req, res) => {
+    const {  body, query: { id } } = req
+    const lifecycle = await filesClient.updateLifecycle(id, body)
+    res.json(lifecycle)
+}
+
+filesController.deleteLifecycle = async (req, res) => {
+    const { query: { id } } = req
+    const lifecycle = await filesClient.deleteLifecycle(id)
+    res.json(lifecycle)
+}
+
+
+filesController.listMetametadata = async (req, res) => {
+    const { query } = req
+    const metametadata = await filesClient.getMetametadata(query)
+    res.json(metametadata)
+}
+
+filesController.addMetametadata = async (req, res) => {
+    const { body } = req
+    const metametadata = await filesClient.addMetametadata(body)
+    res.json(metametadata)
+}
+
+filesController.updateMetametadata = async (req, res) => {
+    const {  body, query: { id } } = req
+    const metametadata = await filesClient.updateMetametadata(id, body)
+    res.json(metametadata)
+}
+
+filesController.deleteMetametadata = async (req, res) => {
+    const { query: { id } } = req
+    const metametadata = await filesClient.deleteMetametadata(id)
+    res.json(metametadata)
+}
+
+
+filesController.listTechnicalRequirements = async (req, res) => {
+    const { query } = req
+    const technicalRequirements = await filesClient.getTechnicalRequirements(query)
+    res.json(technicalRequirements)
+}
+
+filesController.addTechnicalRequirements = async (req, res) => {
+    const { body } = req
+    const technicalRequirements = await filesClient.addTechnicalRequirements(body)
+    res.json(technicalRequirements)
+}
+
+filesController.updateTechnicalRequirements = async (req, res) => {
+    const {  body, query: { id } } = req
+    const technicalRequirements = await filesClient.updateTechnicalRequirements(id, body)
+    res.json(technicalRequirements)
+}
+
+filesController.deleteTechnicalRequirements = async (req, res) => {
+    const { query: { id } } = req
+    const technicalRequirements = await filesClient.deleteTechnicalRequirements(id)
+    res.json(technicalRequirements)
+}
+
+
+filesController.listPedagogicalRequirements = async (req, res) => {
+    const { query } = req
+    const pedagogicalRequirements = await filesClient.getPedagogicalRequirements(query)
+    res.json(pedagogicalRequirements)
+}
+
+filesController.addPedagogicalRequirements = async (req, res) => {
+    const { body } = req
+    const pedagogicalRequirements = await filesClient.addPedagogicalRequirements(body)
+    res.json(pedagogicalRequirements)
+}
+
+filesController.updatePedagogicalRequirements = async (req, res) => {
+    const {  body, query: { id } } = req
+    const pedagogicalRequirements = await filesClient.updatePedagogicalRequirements(id, body)
+    res.json(pedagogicalRequirements)
+}
+
+filesController.deletePedagogicalRequirements = async (req, res) => {
+    const { query: { id } } = req
+    const pedagogicalRequirements = await filesClient.deletePedagogicalRequirements(id)
+    res.json(pedagogicalRequirements)
+}
+
+
+filesController.listRightsOfUse = async (req, res) => {
+    const { query } = req
+    const rightsOfUse = await filesClient.getRightsOfUse(query)
+    res.json(rightsOfUse)
+}
+
+filesController.addRightsOfUse = async (req, res) => {
+    const { body } = req
+    const rightsOfUse = await filesClient.addRightsOfUse(body)
+    res.json(rightsOfUse)
+}
+
+filesController.updateRightsOfUse = async (req, res) => {
+    const {  body, query: { id } } = req
+    const rightsOfUse = await filesClient.updateRightsOfUse(id, body)
+    res.json(rightsOfUse)
+}
+
+filesController.deleteRightsOfUse = async (req, res) => {
+    const { query: { id } } = req
+    const rightsOfUse = await filesClient.deleteRightsOfUse(id)
+    res.json(rightsOfUse)
+}
+
+
+filesController.listAnotation = async (req, res) => {
+    const { query } = req
+    const anotation = await filesClient.getAnotation(query)
+    res.json(anotation)
+}
+
+filesController.addAnotation = async (req, res) => {
+    const { body } = req
+    const anotation = await filesClient.addAnotation(body)
+    res.json(anotation)
+}
+
+filesController.updateAnotation = async (req, res) => {
+    const {  body, query: { id } } = req
+    const anotation = await filesClient.updateAnotation(id, body)
+    res.json(anotation)
+}
+
+filesController.deleteAnotation = async (req, res) => {
+    const { query: { id } } = req
+    const anotation = await filesClient.deleteAnotation(id)
+    res.json(anotation)
+}
+
+
+filesController.listClassification = async (req, res) => {
+    const { query } = req
+    const classification = await filesClient.getClassification(query)
+    res.json(classification)
+}
+
+filesController.addClassification = async (req, res) => {
+    const { body } = req
+    const classification = await filesClient.addClassification(body)
+    res.json(classification)
+}
+
+filesController.updateClassification = async (req, res) => {
+    const {  body, query: { id } } = req
+    const classification = await filesClient.updateClassification(id, body)
+    res.json(classification)
+}
+
+filesController.deleteClassification = async (req, res) => {
+    const { query: { id } } = req
+    const classification = await filesClient.deleteClassification(id)
+    res.json(classification)
+}

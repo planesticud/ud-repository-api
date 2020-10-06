@@ -34,12 +34,75 @@ router.put(routers.GENERAL, wrap(filesController.updateGeneral))
 
 router.delete(routers.GENERAL, wrap(filesController.deleteGeneral))
 
+
+router.get(routers.LIFECYCLE, wrap(filesController.listLifecycle))
+
+router.post(routers.LIFECYCLE, wrap(filesController.addLifecycle))
+
+router.put(routers.LIFECYCLE, wrap(filesController.updateLifecycle))
+
+router.delete(routers.LIFECYCLE, wrap(filesController.deleteLifecycle))
+
+
+router.get(routers.META_METADATA, wrap(filesController.listMetametadata))
+
+router.post(routers.META_METADATA, wrap(filesController.addMetametadata))
+
+router.put(routers.META_METADATA, wrap(filesController.updateMetametadata))
+
+router.delete(routers.META_METADATA, wrap(filesController.deleteMetametadata))
+
+
+router.get(routers.TECHNICAL_REQUIEREMENTS, wrap(filesController.listTechnicalRequirements))
+
+router.post(routers.TECHNICAL_REQUIEREMENTS, wrap(filesController.addTechnicalRequirements))
+
+router.put(routers.TECHNICAL_REQUIEREMENTS, wrap(filesController.updateTechnicalRequirements))
+
+router.delete(routers.TECHNICAL_REQUIEREMENTS, wrap(filesController.deleteTechnicalRequirements))
+
+
+router.get(routers.PEDAGOGICAL_REQUIEREMENTS, wrap(filesController.listPedagogicalRequirements))
+
+router.post(routers.PEDAGOGICAL_REQUIEREMENTS, wrap(filesController.addPedagogicalRequirements))
+
+router.put(routers.PEDAGOGICAL_REQUIEREMENTS, wrap(filesController.updatePedagogicalRequirements))
+
+router.delete(routers.PEDAGOGICAL_REQUIEREMENTS, wrap(filesController.deletePedagogicalRequirements))
+
+
+router.get(routers.RIGHTS_OF_USE, wrap(filesController.listRightsOfUse))
+
+router.post(routers.RIGHTS_OF_USE, wrap(filesController.addRightsOfUse))
+
+router.put(routers.RIGHTS_OF_USE, wrap(filesController.updateRightsOfUse))
+
+router.delete(routers.RIGHTS_OF_USE, wrap(filesController.deleteRightsOfUse))
+
+
+
+router.get(routers.ANOTATIONS, wrap(filesController.listAnotation))
+
+router.post(routers.ANOTATIONS, wrap(filesController.addAnotation))
+
+router.put(routers.ANOTATIONS, wrap(filesController.updateAnotation))
+
+router.delete(routers.ANOTATIONS, wrap(filesController.deleteAnotation))
+
+
+router.get(routers.CLASSIFICACION, wrap(filesController.listClassification))
+
+router.post(routers.CLASSIFICACION, wrap(filesController.addClassification))
+
+router.put(routers.CLASSIFICACION, wrap(filesController.updateClassification))
+
+router.delete(routers.CLASSIFICACION, wrap(filesController.deleteClassification))
+
+
+
 router.get(routers.HEALTH, wrap(async (req, res) => {
     res.status(OK).json({ message: 'OK' })
   }))
 
-  router.get("/testci", wrap(async (req, res) => {
-    res.status(OK).json({ message: 'CI' })
-  }))
 
 module.exports = router

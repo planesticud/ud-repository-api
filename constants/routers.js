@@ -5,6 +5,13 @@ const GENERAL = `${FILES}/general`
 const UPLOAD = '/upload'
 const CALLBACK = '/callback'
 const GOOGLE = '/google'
+const LIFECYCLE = '/lifecycle'
+const META_METADATA= '/meta_metadata'	
+const TECHNICAL_REQUIEREMENTS = '/technical_requirements'	
+const PEDAGOGICAL_REQUIEREMENTS= '/pedagogical_requirements'	
+const RIGHTS_OF_USE = '/rights_of_use'	
+const ANOTATIONS = '/anotation'	
+const CLASSIFICACION = '/classification'
 
 const HEALTH = '/health'
 module.exports = {
@@ -15,5 +22,12 @@ module.exports = {
     GENERAL,
     UPLOAD,
     CALLBACK,
-    GOOGLE
+    GOOGLE,
+    LIFECYCLE,
+    META_METADATA,
+    TECHNICAL_REQUIEREMENTS,
+    PEDAGOGICAL_REQUIEREMENTS,
+    RIGHTS_OF_USE,
+    ANOTATIONS,
+    CLASSIFICACION
 }
