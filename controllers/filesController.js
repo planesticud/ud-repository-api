@@ -166,20 +166,20 @@ filesController.updateFile = async (req, res) => {
         description: body.description,
         key_words: body.key_words
     }
-    const newGeneral = await filesClient.updateGeneral( {id: file.general}, generalBody)
+    const newGeneral = await filesClient.updateGeneral(file.general, generalBody)
     const lifeCycleBody = {
         version: body.version,
         state: body.state,
         participants: body.participants
     }
-    const newLifeCycle = await filesClient.updateLifecycle( {id: file.lifecycle}, lifeCycleBody)
+    const newLifeCycle = await filesClient.updateLifecycle(file.lifecycle, lifeCycleBody)
     const technicalRequirementsBody = {
         format: body.format,
         size: body.size,
         location: body.location,
         requierements: body.requierements
     }
-    const newTechnicalRequirements = await filesClient.updateTechnicalRequirements({id: file.technical_requirements}, technicalRequirementsBody)
+    const newTechnicalRequirements = await filesClient.updateTechnicalRequirements(file.technical_requirements, technicalRequirementsBody)
     const pedagogicalRequirementsBody = {
         type_interaction: body.class_learning,
         semantic_density: body.type_of_educational_resource,
@@ -187,24 +187,24 @@ filesController.updateFile = async (req, res) => {
         difficulty: body.objetive_poblation,
         context: body.context
     }
-    const newPedagogicalRequirements = await filesClient.updatePedagogicalRequirementss({id: file.pedagogical_requirements}, pedagogicalRequirementsBody)
+    const newPedagogicalRequirements = await filesClient.updatePedagogicalRequirementss(file.pedagogical_requirements, pedagogicalRequirementsBody)
 
     const rightsOfUseBody = {
         cost: body.cost,
         copyright: body.copyright
     }
-    const newRightsOfUse = await filesClient.updateRightsOfUse({id: file.rights_of_use}, rightsOfUseBody)
+    const newRightsOfUse = await filesClient.updateRightsOfUse(file.rights_of_use, rightsOfUseBody)
 
     const anotationBody = {
         entity: body.entity,
         date: body.date
     }
-    const newAnotation = await filesClient.updateAnotation({id: file.anotation}, anotationBody)
+    const newAnotation = await filesClient.updateAnotation(file.anotation, anotationBody)
 
     const classificationBody = {
         purpose: body.purpose
     }
-    const newClassification = await filesClient.updateClassification({id: file.classification}, classificationBody)
+    const newClassification = await filesClient.updateClassification(file.classification, classificationBody)
     log.info(`update files ok`)
     res.status(OK)
 }
