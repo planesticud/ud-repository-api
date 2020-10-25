@@ -55,13 +55,13 @@ filesController.listFilesById = async (req, res) => {
     const files = await filesClient.getFilesById(id)
     const info = []
     for (const file of files) {
-        const general = await filesClient.getGeneral({id:file.general || 0})
-        const lifecycle = await filesClient.getLifecycle({id:file.lifecycle || 0})
-        const technicalRequirements = await filesClient.getTechnicalRequirements({id:file.technical_requirements || 0})
-        const pedagogicalRequirements = await filesClient.getPedagogicalRequirements({id:file.pedagogical_requirements || 0})
-        const rightsOfUse = await filesClient.getRightsOfUse({id:file.rights_of_use || 0})
-        const anotation = await filesClient.getAnotation({id:file.anotation || 0})
-        const classification = await filesClient.getClassification({id:file.classification || 0})
+        const general = (await filesClient.getGeneral({id:file.general || 0}))[0]
+        const lifecycle = (await filesClient.getLifecycle({id:file.lifecycle || 0}))[0]
+        const technicalRequirements = (await filesClient.getTechnicalRequirements({id:file.technical_requirements || 0}))[0]
+        const pedagogicalRequirements = (await filesClient.getPedagogicalRequirements({id:file.pedagogical_requirements || 0}))[0]
+        const rightsOfUse = (await filesClient.getRightsOfUse({id:file.rights_of_use || 0}))[0]
+        const anotation = (await filesClient.getAnotation({id:file.anotation || 0}))[0]
+        const classification = (await filesClient.getClassification({id:file.classification || 0}))[0]
         info.push({
             "title": general.title,
             "language": general.language,
