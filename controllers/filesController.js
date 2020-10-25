@@ -187,7 +187,7 @@ filesController.updateFile = async (req, res) => {
         difficulty: body.objetive_poblation,
         context: body.context
     }
-    const newPedagogicalRequirements = await filesClient.updatePedagogicalRequirementss(file.pedagogical_requirements, pedagogicalRequirementsBody)
+    const newPedagogicalRequirements = await filesClient.updatePedagogicalRequirements(file.pedagogical_requirements, pedagogicalRequirementsBody)
 
     const rightsOfUseBody = {
         cost: body.cost,
