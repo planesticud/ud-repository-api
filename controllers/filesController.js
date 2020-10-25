@@ -206,7 +206,7 @@ filesController.updateFile = async (req, res) => {
     }
     const newClassification = await filesClient.updateClassification(file.classification, classificationBody)
     log.info(`update files ok`)
-    res.status(OK)
+    return res.status(OK).json({status:"updated"})
 }
 
 filesController.uploadFiles = async (req, res) => {
