@@ -1,7 +1,7 @@
 const AUTH = '/auth'
 const USERS = '/users'
 const FILES = '/files'
-const FILES_MAIL `${FILES}/email`
+const FILES_MAIL = `${FILES}/email`
 const GENERAL = `${FILES}/general`
 const UPLOAD = '/upload'
 const CALLBACK = '/callback'
@@ -20,6 +20,7 @@ module.exports = {
     USERS,
     HEALTH,
     FILES,
+    FILES_MAIL,
     GENERAL,
     UPLOAD,
     CALLBACK,
