@@ -64,6 +64,7 @@ filesController.listFilesById = async (req, res) => {
         const anotation = (await filesClient.getAnotation({id:file.anotation || 0}))[0]
         const classification = (await filesClient.getClassification({id:file.classification || 0}))[0]
         info.push({
+            "id": file.id,
             "title": general.title,
             "language": general.language,
             "description": general.description,
@@ -241,8 +242,16 @@ filesController.uploadFiles = async (req, res) => {
 
 filesController.deleteFile = async (req, res) => {
     const { query: { id } } = req
-    const files = await filesClient.deleteFile(id)
-    res.json(files)
+    const file = (await filesClient.getFilesById(id))[0]
+    await filesClient.deleteGeneral(file.general)
+    await filesClient.deleteLifecycle(file.lifecycle)
+    await filesClient.deleteTechnicalRequirements(file.technical_requirements)
+    await filesClient.deletePedagogicalRequirements(file.pedagogical_requirements)
+    await filesClient.deleteRightsOfUse(file.rights_of_use)
+    await filesClient.deleteAnotation(file.anotation)
+    await filesClient.deleteClassification(file.classification)
+    await filesClient.deleteFile(file.id)
+    res.json(file)
 }
 
 filesController.listGeneral = async (req, res) => {
