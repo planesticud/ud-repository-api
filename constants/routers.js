@@ -1,6 +1,7 @@
 const AUTH = '/auth'
 const USERS = '/users'
 const FILES = '/files'
+const FILES_MAIL `${FILES}/email`
 const GENERAL = `${FILES}/general`
 const UPLOAD = '/upload'
 const CALLBACK = '/callback'

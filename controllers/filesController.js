@@ -9,10 +9,86 @@ const filesController = module.exports
 const log = logger.getLogger('filesController')
 const mime = require('mime-types')
 
-filesController.listFiles = async (req, res) => {
+filesController.listFilesByEmail = async (req, res) => {
     const { query: { email } } = req
     const files = await filesClient.getFilesByMail(email)
-    res.json(files)
+    const info = []
+    for (const file of files) {
+        const general = await filesClient.getGeneral(file.general)
+        const lifecycle = await filesClient.getLifecycle(file.lifecycle)
+        const technicalRequirements = await filesClient.getTechnicalRequirements(file.technical_requirements)
+        const pedagogicalRequirements = await filesClient.getPedagogicalRequirements(file.pedagogical_requirements)
+        const rightsOfUse = await filesClient.getRightsOfUse(file.rights_of_use)
+        const anotation = await filesClient.getAnotation(file.anotation)
+        const classification = await filesClient.getClassification(file.classification)
+        info.push({
+            "title": general.title,
+            "language": general.language,
+            "description": general.description,
+            "key_words": general.key_words,
+            "version": lifecycle.version,
+            "state": lifecycle.state,
+            "participants": lifecycle.participants,
+            "format": technicalRequirements.format,
+            "size": technicalRequirements.size,
+            "location": technicalRequirements.location,
+            "requierements": technicalRequirements.requierements,
+            "class_learning": pedagogicalRequirements.type_interaction,
+            "type_of_educational_resource": pedagogicalRequirements.semantic_density,
+            "level_of_interaction": pedagogicalRequirements.level_interaction,
+            "objetive_poblation": pedagogicalRequirements.difficulty,
+            "context": pedagogicalRequirements.context,
+            "cost": rightsOfUse.cost,
+            "copyright": rightsOfUse.copyright,
+            "entity": anotation.entity,
+            "date": anotation.date,
+            "purpose": classification.purpose,
+            "email": file.email
+        })
+    }
+
+    res.json(info)
+}
+
+filesController.listFilesById = async (req, res) => {
+    const { query: { id } } = req
+    const files = await filesClient.getFilesById(id)
+    const info = []
+    for (const file of files) {
+        const general = await filesClient.getGeneral(file.general)
+        const lifecycle = await filesClient.getLifecycle(file.lifecycle)
+        const technicalRequirements = await filesClient.getTechnicalRequirements(file.technical_requirements)
+        const pedagogicalRequirements = await filesClient.getPedagogicalRequirements(file.pedagogical_requirements)
+        const rightsOfUse = await filesClient.getRightsOfUse(file.rights_of_use)
+        const anotation = await filesClient.getAnotation(file.anotation)
+        const classification = await filesClient.getClassification(file.classification)
+        info.push({
+            "title": general.title,
+            "language": general.language,
+            "description": general.description,
+            "key_words": general.key_words,
+            "version": lifecycle.version,
+            "state": lifecycle.state,
+            "participants": lifecycle.participants,
+            "format": technicalRequirements.format,
+            "size": technicalRequirements.size,
+            "location": technicalRequirements.location,
+            "requierements": technicalRequirements.requierements,
+            "class_learning": pedagogicalRequirements.type_interaction,
+            "type_of_educational_resource": pedagogicalRequirements.semantic_density,
+            "level_of_interaction": pedagogicalRequirements.level_interaction,
+            "objetive_poblation": pedagogicalRequirements.difficulty,
+            "context": pedagogicalRequirements.context,
+            "cost": rightsOfUse.cost,
+            "copyright": rightsOfUse.copyright,
+            "entity": anotation.entity,
+            "date": anotation.date,
+            "purpose": classification.purpose,
+            "email": file.email
+        })
+    }
+
+    res.json(info)
 }
 
 filesController.addFiles = async (req, res) => {
@@ -31,16 +107,16 @@ filesController.addFiles = async (req, res) => {
     }
     const newLifeCycle = await filesClient.addLifecycle(lifeCycleBody)
     const technicalRequirementsBody = {
-        format:body.format,
+        format: body.format,
         size: body.size,
-        location:body.location,
-        requierements:body.requierements
+        location: body.location,
+        requierements: body.requierements
     }
     const newTechnicalRequirements = await filesClient.addTechnicalRequirements(technicalRequirementsBody)
     const pedagogicalRequirementsBody = {
         type_interaction: body.class_learning,
         semantic_density: body.type_of_educational_resource,
-        level_interaction : body.level_of_interaction,
+        level_interaction: body.level_of_interaction,
         difficulty: body.objetive_poblation,
         context: body.context
     }
@@ -51,7 +127,7 @@ filesController.addFiles = async (req, res) => {
         copyright: body.copyright
     }
     const newRightsOfUse = await filesClient.addRightsOfUse(rightsOfUseBody)
-    
+
     const anotationBody = {
         entity: body.entity,
         date: body.date
@@ -74,22 +150,22 @@ filesController.addFiles = async (req, res) => {
         classification: newClassification.id
     }
     const files = await filesClient.addFiles(metadata)
-    log.info(JSON.stringify( metadata))
+    log.info(JSON.stringify(metadata))
     log.info(files)
     res.json(files)
 }
 
 filesController.updateFile = async (req, res) => {
-    const {  body, query: { id } } = req
+    const { body, query: { id } } = req
     const files = await filesClient.updateFile(id, body)
     res.json(files)
 }
 
 filesController.uploadFiles = async (req, res) => {
     log.info('createFiles')
-   
-    if(req.files){
-        
+
+    if (req.files) {
+
         const file = req.files.file
 
         log.info(`upload file=${file.name}`)
@@ -97,22 +173,22 @@ filesController.uploadFiles = async (req, res) => {
         const fileType = mime.lookup(file.name)
         log.info(`file type= ${fileType}`)
         let url = ''
-        if(fileType === 'application/zip'){
+        if (fileType === 'application/zip') {
             uploadScorm(file.name, './tmp')
-            url= `${urlS3Base}/${file.name.slice(0, -4)}/story.html`
+            url = `${urlS3Base}/${file.name.slice(0, -4)}/story.html`
             log.info(`upload file to s3=${url}`)
-        res.json({url: url})
-        }else{
+            res.json({ url: url })
+        } else {
             url = uploadFile(file.name)
             log.info(`upload file to s3=${url}`)
-            res.json({url: url})
+            res.json({ url: url })
         }
-      
-    }else{
+
+    } else {
         log.error('file not found')
-        res.status(400).json({error: 'file_not_found'})
+        res.status(400).json({ error: 'file_not_found' })
     }
-    
+
 }
 
 filesController.deleteFile = async (req, res) => {
@@ -134,7 +210,7 @@ filesController.addGeneral = async (req, res) => {
 }
 
 filesController.updateGeneral = async (req, res) => {
-    const {  body, query: { id } } = req
+    const { body, query: { id } } = req
     const general = await filesClient.updateGeneral(id, body)
     res.json(general)
 }
@@ -159,7 +235,7 @@ filesController.addLifecycle = async (req, res) => {
 }
 
 filesController.updateLifecycle = async (req, res) => {
-    const {  body, query: { id } } = req
+    const { body, query: { id } } = req
     const lifecycle = await filesClient.updateLifecycle(id, body)
     res.json(lifecycle)
 }
@@ -184,7 +260,7 @@ filesController.addMetametadata = async (req, res) => {
 }
 
 filesController.updateMetametadata = async (req, res) => {
-    const {  body, query: { id } } = req
+    const { body, query: { id } } = req
     const metametadata = await filesClient.updateMetametadata(id, body)
     res.json(metametadata)
 }
@@ -209,7 +285,7 @@ filesController.addTechnicalRequirements = async (req, res) => {
 }
 
 filesController.updateTechnicalRequirements = async (req, res) => {
-    const {  body, query: { id } } = req
+    const { body, query: { id } } = req
     const technicalRequirements = await filesClient.updateTechnicalRequirements(id, body)
     res.json(technicalRequirements)
 }
@@ -234,7 +310,7 @@ filesController.addPedagogicalRequirements = async (req, res) => {
 }
 
 filesController.updatePedagogicalRequirements = async (req, res) => {
-    const {  body, query: { id } } = req
+    const { body, query: { id } } = req
     const pedagogicalRequirements = await filesClient.updatePedagogicalRequirements(id, body)
     res.json(pedagogicalRequirements)
 }
@@ -259,7 +335,7 @@ filesController.addRightsOfUse = async (req, res) => {
 }
 
 filesController.updateRightsOfUse = async (req, res) => {
-    const {  body, query: { id } } = req
+    const { body, query: { id } } = req
     const rightsOfUse = await filesClient.updateRightsOfUse(id, body)
     res.json(rightsOfUse)
 }
@@ -284,7 +360,7 @@ filesController.addAnotation = async (req, res) => {
 }
 
 filesController.updateAnotation = async (req, res) => {
-    const {  body, query: { id } } = req
+    const { body, query: { id } } = req
     const anotation = await filesClient.updateAnotation(id, body)
     res.json(anotation)
 }
@@ -309,7 +385,7 @@ filesController.addClassification = async (req, res) => {
 }
 
 filesController.updateClassification = async (req, res) => {
-    const {  body, query: { id } } = req
+    const { body, query: { id } } = req
     const classification = await filesClient.updateClassification(id, body)
     res.json(classification)
 }

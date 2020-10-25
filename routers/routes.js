@@ -17,7 +17,9 @@ router.get(routers.GOOGLE, passport.authenticate('google', { scope: ['email', 'p
 router.post(routers.UPLOAD, wrap(filesController.uploadFiles))
 
 
-router.get(routers.FILES, wrap(filesController.listFiles))
+router.get(routers.FILES, wrap(filesController.listFilesById))
+
+router.get(routers.FILES_MAIL, wrap(filesController.listFilesByEmail))
 
 router.post(routers.FILES, wrap(filesController.addFiles))
 
