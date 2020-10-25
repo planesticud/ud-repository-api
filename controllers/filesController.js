@@ -17,7 +17,65 @@ filesController.listFiles = async (req, res) => {
 
 filesController.addFiles = async (req, res) => {
     const { body } = req
-    const files = await filesClient.addFiles(body)
+    const generalBody = {
+        title: body.title,
+        language: body.language,
+        description: body.description,
+        key_words: body.key_words
+    }
+    const newGeneral = await filesClient.addGeneral(generalBody)
+    const lifeCycleBody = {
+        version: body.version,
+        state: body.state,
+        participants: body.participants
+    }
+    const newLifeCycle = await filesClient.addLifecycle(lifeCycleBody)
+    const technicalRequirementsBody = {
+        format:body.format,
+        size: body.size,
+        location:body.location,
+        requierements:body.requierements
+    }
+    const newTechnicalRequirements = await filesClient.addTechnicalRequirements(technicalRequirementsBody)
+    const pedagogicalRequirementsBody = {
+        type_interaction: body.class_learning,
+        semantic_density: body.type_of_educational_resource,
+        level_interaction : body.level_of_interaction,
+        difficulty: body.objetive_poblation,
+        context: body.context
+    }
+    const newPedagogicalRequirements = await filesClient.addPedagogicalRequirements(pedagogicalRequirementsBody)
+
+    const rightsOfUseBody = {
+        cost: body.cost,
+        copyright: body.copyright
+    }
+    const newRightsOfUse = await filesClient.addRightsOfUse(rightsOfUseBody)
+    
+    const anotationBody = {
+        entity: body.entity,
+        date: body.date
+    }
+    const newAnotation = await filesClient.addAnotation(anotationBody)
+
+    const classificationBody = {
+        purpose: body.purpose
+    }
+    const newClassification = await filesClient.addClassification(classificationBody)
+
+    const metadata = {
+        email: body.email,
+        general: newGeneral.id,
+        lifecycle: newLifeCycle.id,
+        technical_requirements: newTechnicalRequirements.id,
+        pedagogical_requirements: newPedagogicalRequirements.id,
+        rights_of_use: newRightsOfUse.id,
+        anotation: newAnotation.id,
+        classification: newClassification.id
+    }
+    const files = await filesClient.addFiles(metadata)
+    log.info(JSON.stringify( metadata))
+    log.info(files)
     res.json(files)
 }
 
