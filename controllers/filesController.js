@@ -1,4 +1,4 @@
-const { CREATED, BAD_REQUEST } = require('http-status-codes')
+const { CREATED, BAD_REQUEST, OK } = require('http-status-codes')
 
 const logger = require('../utils/logger')
 const { uploadFile } = require('../utils/s3')
@@ -22,6 +22,7 @@ filesController.listFilesByEmail = async (req, res) => {
         const anotation = await filesClient.getAnotation(file.anotation)
         const classification = await filesClient.getClassification(file.classification)
         info.push({
+            "id": file.id,
             "title": general.title,
             "language": general.language,
             "description": general.description,
@@ -157,8 +158,55 @@ filesController.addFiles = async (req, res) => {
 
 filesController.updateFile = async (req, res) => {
     const { body, query: { id } } = req
-    const files = await filesClient.updateFile(id, body)
-    res.json(files)
+    const file = (await filesClient.getFilesById(id))[0]
+    
+    const generalBody = {
+        title: body.title,
+        language: body.language,
+        description: body.description,
+        key_words: body.key_words
+    }
+    const newGeneral = await filesClient.updateGeneral( {id: file.general}, generalBody)
+    const lifeCycleBody = {
+        version: body.version,
+        state: body.state,
+        participants: body.participants
+    }
+    const newLifeCycle = await filesClient.updateLifecycle( {id: file.lifecycle}, lifeCycleBody)
+    const technicalRequirementsBody = {
+        format: body.format,
+        size: body.size,
+        location: body.location,
+        requierements: body.requierements
+    }
+    const newTechnicalRequirements = await filesClient.updateTechnicalRequirements({id: file.technical_requirements}, technicalRequirementsBody)
+    const pedagogicalRequirementsBody = {
+        type_interaction: body.class_learning,
+        semantic_density: body.type_of_educational_resource,
+        level_interaction: body.level_of_interaction,
+        difficulty: body.objetive_poblation,
+        context: body.context
+    }
+    const newPedagogicalRequirements = await filesClient.updatePedagogicalRequirementss({id: file.pedagogical_requirements}, pedagogicalRequirementsBody)
+
+    const rightsOfUseBody = {
+        cost: body.cost,
+        copyright: body.copyright
+    }
+    const newRightsOfUse = await filesClient.updateRightsOfUse({id: file.rights_of_use}, rightsOfUseBody)
+
+    const anotationBody = {
+        entity: body.entity,
+        date: body.date
+    }
+    const newAnotation = await filesClient.updateAnotation({id: file.anotation}, anotationBody)
+
+    const classificationBody = {
+        purpose: body.purpose
+    }
+    const newClassification = await filesClient.updateClassification({id: file.classification}, classificationBody)
+    log.info(`update files ok`)
+    res.status(OK)
 }
 
 filesController.uploadFiles = async (req, res) => {
