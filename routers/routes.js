@@ -6,7 +6,7 @@ const { OK } = require('http-status-codes')
 const wrap = require('../wrap.js')
 const { routers } = require('../constants')
 const auth = require('../auth/validateToken')
-const { apiController, filesController } = require('../controllers')
+const { apiController, filesController, usersController } = require('../controllers')
 
 const router = express.Router()
 
@@ -100,6 +100,13 @@ router.put(routers.CLASSIFICACION, wrap(filesController.updateClassification))
 
 router.delete(routers.CLASSIFICACION, wrap(filesController.deleteClassification))
 
+router.get(routers.USERS, wrap(usersController.listUsers))
+
+router.post(routers.USERS, wrap(usersController.addUsers))
+
+router.put(routers.USERS, wrap(usersController.updateUsers))
+
+router.delete(routers.USERS, wrap(usersController.deleteUsers))
 
 
 router.get(routers.HEALTH, wrap(async (req, res) => {

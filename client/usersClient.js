@@ -12,6 +12,12 @@ usersClient.getUsers = async (email) => {
     return(data)
   }
 
+  usersClient.getAllUsers = async (params) => {
+    log.info(`getAllUsers params=${email} `)     
+    const { data } = await axios.get(`${usersUrl}/users`, { params:params })
+    return(data)
+  }
+
 usersClient.addUsers = async (user) => {
     log.info(`addUsers user=${JSON.stringify(user)} `)     
     const { data } = await axios.post(`${usersUrl}/users`, user)
