@@ -26,7 +26,7 @@ usersClient.addUsers = async (user) => {
 
   usersClient.updateUsers = async (id) => {
     log.info(`updateUsers id=${id} `)     
-    const { data } = await axios.put(`${usersUrl}/users`, { params: { id } })
+    const { data } = await axios.put(`${usersUrl}/users`, { params:  id  })
     return(data)
   }
 
