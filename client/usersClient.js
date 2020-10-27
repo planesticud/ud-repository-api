@@ -13,7 +13,7 @@ usersClient.getUsers = async (email) => {
   }
 
   usersClient.getAllUsers = async (params) => {
-    log.info(`getAllUsers params=${email} `)     
+    log.info(`getAllUsers params=${params} `)     
     const { data } = await axios.get(`${usersUrl}/users`, { params:params })
     return(data)
   }
