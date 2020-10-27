@@ -26,7 +26,7 @@ usersClient.addUsers = async (user) => {
 
   usersClient.updateUsers = async (id, body) => {
     log.info(`updateUsers id=${id} body=${JSON.stringify(body)} `)     
-    const { data } = await axios.put(`${filesUrl}/users`, body, { params: { id } })
+    const { data } = await axios.put(`${usersUrl}/users`, body, { params: { id } })
     return(data)
   }
 
