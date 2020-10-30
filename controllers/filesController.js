@@ -98,13 +98,13 @@ filesController.listFilesAll = async (req, res) => {
     const files = await filesClient.getFilesAll()
     const info = []
     for (const file of files) {
-        const general = await filesClient.getGeneral(file.general)
-        const lifecycle = await filesClient.getLifecycle(file.lifecycle)
-        const technicalRequirements = await filesClient.getTechnicalRequirements(file.technical_requirements)
-        const pedagogicalRequirements = await filesClient.getPedagogicalRequirements(file.pedagogical_requirements)
-        const rightsOfUse = await filesClient.getRightsOfUse(file.rights_of_use)
-        const anotation = await filesClient.getAnotation(file.anotation)
-        const classification = await filesClient.getClassification(file.classification)
+        const general = await filesClient.getGeneral({id: file.general})
+        const lifecycle = await filesClient.getLifecycle({id: file.lifecycle})
+        const technicalRequirements = await filesClient.getTechnicalRequirements({id: file.technical_requirements})
+        const pedagogicalRequirements = await filesClient.getPedagogicalRequirements({id: file.pedagogical_requirements})
+        const rightsOfUse = await filesClient.getRightsOfUse({id: file.rights_of_use})
+        const anotation = await filesClient.getAnotation({id: file.anotation})
+        const classification = await filesClient.getClassification({id: file.classification})
         info.push({
             "id": file.id,
             "title": general.title,
