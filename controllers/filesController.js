@@ -211,14 +211,14 @@ filesController.updateFile = async (req, res) => {
     }
     const newGeneral = await filesClient.updateGeneral(file.general, generalBody)
     const lifeCycleBody = {
-        version: body.version,
+        version: String( body.version),
         state: body.state,
         participants: body.participants
     }
     const newLifeCycle = await filesClient.updateLifecycle(file.lifecycle, lifeCycleBody)
     const technicalRequirementsBody = {
         format: body.format,
-        size: body.size,
+        size:  String( body.size),
         location: body.location,
         requierements: body.requierements
     }
@@ -240,12 +240,12 @@ filesController.updateFile = async (req, res) => {
 
     const anotationBody = {
         entity: body.entity,
-        date: body.date
+        date:  String( body.date)
     }
     const newAnotation = await filesClient.updateAnotation(file.anotation, anotationBody)
 
     const classificationBody = {
-        purpose: body.purpose
+        purpose:  String( body.purpose)
     }
     const newClassification = await filesClient.updateClassification(file.classification, classificationBody)
     log.info(`update files ok`)
