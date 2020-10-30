@@ -45,7 +45,7 @@ filesClient.deleteFile = async (id) => {
 
 filesClient.getGeneral = async (query) => {
     log.info(`getGeneral query=${query} `)     
-    const { data } = await axios.get(`${filesUrl}/general`, { params: query })
+    const { data } = await axios.get(`${filesUrl}/general`,  { params: { id } })
     return(data)
 }
 
