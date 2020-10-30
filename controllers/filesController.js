@@ -272,7 +272,12 @@ filesController.uploadFiles = async (req, res) => {
         } else {
             url = uploadFile(file.name)
             log.info(`upload file to s3=${url}`)
-            res.json({ url: url })
+            res.json(
+                {
+                     url: url, 
+                     size: file  ,
+                     format: fileType
+                })
         }
 
     } else {
