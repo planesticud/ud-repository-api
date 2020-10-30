@@ -145,14 +145,14 @@ filesController.addFiles = async (req, res) => {
     }
     const newGeneral = await filesClient.addGeneral(generalBody)
     const lifeCycleBody = {
-        version: body.version,
+        version: String( body.version),
         state: body.state,
         participants: body.participants
     }
     const newLifeCycle = await filesClient.addLifecycle(lifeCycleBody)
     const technicalRequirementsBody = {
         format: body.format,
-        size: body.size,
+        size:  String(body.size),
         location: body.location,
         requierements: body.requierements
     }
@@ -174,12 +174,12 @@ filesController.addFiles = async (req, res) => {
 
     const anotationBody = {
         entity: body.entity,
-        date: body.date
+        date:  String(body.date)
     }
     const newAnotation = await filesClient.addAnotation(anotationBody)
 
     const classificationBody = {
-        purpose: body.purpose
+        purpose:  String(body.purpose)
     }
     const newClassification = await filesClient.addClassification(classificationBody)
 
