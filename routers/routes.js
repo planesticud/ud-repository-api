@@ -21,6 +21,8 @@ router.get(routers.FILES, wrap(filesController.listFilesById))
 
 router.get(routers.FILES_MAIL, wrap(filesController.listFilesByEmail))
 
+router.get(routers.FILES_ALL, wrap(filesController.listFilesAll))
+
 router.post(routers.FILES, wrap(filesController.addFiles))
 
 router.put(routers.FILES, wrap(filesController.updateFile))

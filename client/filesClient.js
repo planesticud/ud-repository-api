@@ -17,6 +17,12 @@ filesClient.getFilesByMail = async (email) => {
     const { data } = await axios.get(`${filesUrl}/metadata`, { params: { id } })
     return(data)
   }
+   
+  filesClient.getFilesAll = async () => {
+    log.info(`getFilesAll `)     
+    const { data } = await axios.get(`${filesUrl}/metadata`)
+    return(data)
+  }
 
 filesClient.addFiles = async (body) => {
     log.info(`addFiles body=${JSON.stringify(body)} `)     

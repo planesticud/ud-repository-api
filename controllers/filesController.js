@@ -93,6 +93,48 @@ filesController.listFilesById = async (req, res) => {
     res.json(info)
 }
 
+filesController.listFilesAll = async (req, res) => {
+    
+    const files = await filesClient.getFilesAll()
+    const info = []
+    for (const file of files) {
+        const general = await filesClient.getGeneral(file.general)
+        const lifecycle = await filesClient.getLifecycle(file.lifecycle)
+        const technicalRequirements = await filesClient.getTechnicalRequirements(file.technical_requirements)
+        const pedagogicalRequirements = await filesClient.getPedagogicalRequirements(file.pedagogical_requirements)
+        const rightsOfUse = await filesClient.getRightsOfUse(file.rights_of_use)
+        const anotation = await filesClient.getAnotation(file.anotation)
+        const classification = await filesClient.getClassification(file.classification)
+        info.push({
+            "id": file.id,
+            "title": general.title,
+            "language": general.language,
+            "description": general.description,
+            "key_words": general.key_words,
+            "version": lifecycle.version,
+            "state": lifecycle.state,
+            "participants": lifecycle.participants,
+            "format": technicalRequirements.format,
+            "size": technicalRequirements.size,
+            "location": technicalRequirements.location,
+            "requierements": technicalRequirements.requierements,
+            "class_learning": pedagogicalRequirements.type_interaction,
+            "type_of_educational_resource": pedagogicalRequirements.semantic_density,
+            "level_of_interaction": pedagogicalRequirements.level_interaction,
+            "objetive_poblation": pedagogicalRequirements.difficulty,
+            "context": pedagogicalRequirements.context,
+            "cost": rightsOfUse.cost,
+            "copyright": rightsOfUse.copyright,
+            "entity": anotation.entity,
+            "date": anotation.date,
+            "purpose": classification.purpose,
+            "email": file.email
+        })
+    }
+
+    res.json(info)
+}
+
 filesController.addFiles = async (req, res) => {
     const { body } = req
     const generalBody = {
