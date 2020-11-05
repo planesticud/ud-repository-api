@@ -220,7 +220,7 @@ filesController.updateFile = async (req, res) => {
         format: body.format,
         size:  String( body.size),
         location: body.location,
-        requierements: body.requierements
+        requierements: body.requierements || ""
     }
     const newTechnicalRequirements = await filesClient.updateTechnicalRequirements(file.technical_requirements, technicalRequirementsBody)
     const pedagogicalRequirementsBody = {
