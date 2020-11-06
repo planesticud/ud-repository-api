@@ -13,7 +13,7 @@ apiController.callback = async (req, res) => {
   const email = emails[0].value
   const user = await usersClient.getUsers(email)
   if (user.length) {
-    return res.redirect(`http://localhost:8081/login?token=${token}&name=${displayName}&url_image=${image}&rol=ESTUDIANTE`)
+    return res.redirect(`https://repository.damillano.com/login?token=${token}&name=${displayName}&url_image=${image}&rol=ESTUDIANTE`)
   } else {
     const newUser = await usersClient.addUsers({
       name: displayName,
@@ -23,7 +23,7 @@ apiController.callback = async (req, res) => {
     log.info(newUser)
     const user = await usersClient.getUsers(email)
     if (user.length) {
-      return res.redirect(`http://localhost:8081/login?token=${token}&name=${displayName}&url_image=${image}&rol=ESTUDIANTE`)
+      return res.redirect(`https://repository.damillano.com/login?token=${token}&name=${displayName}&url_image=${image}&rol=ESTUDIANTE`)
     } else {
       return res.status(BAD_REQUEST).json({ error: 'user error' })
     }
