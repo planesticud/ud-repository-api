@@ -268,7 +268,11 @@ filesController.uploadFiles = async (req, res) => {
             uploadScorm(file.name, './tmp')
             url = `${urlS3Base}/${file.name.slice(0, -4)}/story.html`
             log.info(`upload file to s3=${url}`)
-            res.json({ url: url })
+            res.json({
+                url: url, 
+                size: file  ,
+                format: fileType
+           })
         } else {
             url = uploadFile(file.name)
             log.info(`upload file to s3=${url}`)
