@@ -13,7 +13,7 @@ apiController.callback = async (req, res) => {
   const email = emails[0].value
   const user = await usersClient.getUsers(email)
   if (user.length) {
-    return res.redirect(`https://repository.damillano.com/login?token=${token}&name=${displayName}&url_image=${image}&rol=${user[0].rol}&email=${user[0].email}`)
+    return res.redirect(`https://repository.planestic.udistrital.edu.co/login?token=${token}&name=${displayName}&url_image=${image}&rol=${user[0].rol}&email=${user[0].email}`)
     //return res.redirect(`http://localhost:8081/login?token=${token}&name=${displayName}&url_image=${image}&rol=${user[0].rol}&email=${user[0].email}`)
   } else {
     const newUser = await usersClient.addUsers({
