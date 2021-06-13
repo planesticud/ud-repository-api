@@ -25,7 +25,7 @@ apiController.callback = async (req, res) => {
     const user = await usersClient.getUsers(email)
     log.info(`el nuevo user ${user} -------------------------`)
     if (user.length) {
-      return res.redirect(`https://repository.damillano.com/login?token=${token}&name=${displayName}&url_image=${image}&rol=${user[0].rol}&email=${user[0].email}`)
+      return res.redirect(`https://repository.planestic.udistrital.edu.co/login?token=${token}&name=${displayName}&url_image=${image}&rol=${user[0].rol}&email=${user[0].email}`)
       //return res.redirect(`http://localhost:8081/login?token=${token}&name=${displayName}&url_image=${image}&rol=${user[0].rol}&email=${user[0].email}`)
     } else {
       return res.status(BAD_REQUEST).json({ error: 'user error' })
