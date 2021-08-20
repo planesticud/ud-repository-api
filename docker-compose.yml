@@ -4,7 +4,7 @@ networks:
 
 services:
   ud-repository-api:
-     build: .
+     image: planesticud/ud-repository-api
      container_name: ud-repository-api
      restart: on-failure
      env_file:
