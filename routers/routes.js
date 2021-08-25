@@ -6,7 +6,7 @@ const { OK } = require('http-status-codes')
 const wrap = require('../wrap.js')
 const { routers } = require('../constants')
 const auth = require('../auth/validateToken')
-const { apiController, filesController, usersController } = require('../controllers')
+const { apiController, filesController, usersController, publicarController } = require('../controllers')
 
 const router = express.Router()
 
