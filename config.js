@@ -10,7 +10,7 @@ const {
     ACL,
     URL_S3_BASE
 } = process.env
-const PUBLICAR_URL ="http://ud-repository-api"
+const PUBLICAR_URL ="http://ud-repository-public"
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID
 const secretAccessKey  = process.env.AWS_SECRET_ACCESS_KEY
 const  region = process.env.AWS_DEFAULT_REGION
