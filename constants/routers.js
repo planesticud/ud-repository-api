@@ -14,6 +14,7 @@ const PEDAGOGICAL_REQUIEREMENTS= '/pedagogical_requirements'
 const RIGHTS_OF_USE = '/rights_of_use'	
 const ANOTATIONS = '/anotation'	
 const CLASSIFICACION = '/classification'
+const PUBLICAR='/publicar'
 
 const HEALTH = '/health'
 module.exports = {
@@ -33,5 +34,6 @@ module.exports = {
     PEDAGOGICAL_REQUIEREMENTS,
     RIGHTS_OF_USE,
     ANOTATIONS,
-    CLASSIFICACION
+    CLASSIFICACION,
+    PUBLICAR
 }

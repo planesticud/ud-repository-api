@@ -110,6 +110,13 @@ router.put(routers.USERS, wrap(usersController.updateUsers))
 
 router.delete(routers.USERS, wrap(usersController.deleteUsers))
 
+router.get(routers.PUBLICAR, wrap(publicarController.getPublicarAll))
+
+router.post(routers.PUBLICAR, wrap(publicarController.addPublicar))
+
+router.put(routers.PUBLICAR, wrap(publicarController.updatePublicar))
+
+router.delete(routers.PUBLICAR, wrap(publicarController.deletePublicar))
 
 router.get(routers.HEALTH, wrap(async (req, res) => {
     res.status(OK).json({ message: 'OK' })
