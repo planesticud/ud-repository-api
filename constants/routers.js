@@ -8,13 +8,14 @@ const UPLOAD = '/upload'
 const CALLBACK = '/callback'
 const GOOGLE = '/google'
 const LIFECYCLE = '/lifecycle'
-const META_METADATA= '/meta_metadata'	
-const TECHNICAL_REQUIEREMENTS = '/technical_requirements'	
-const PEDAGOGICAL_REQUIEREMENTS= '/pedagogical_requirements'	
-const RIGHTS_OF_USE = '/rights_of_use'	
-const ANOTATIONS = '/anotation'	
+const META_METADATA = '/meta_metadata'
+const TECHNICAL_REQUIEREMENTS = '/technical_requirements'
+const PEDAGOGICAL_REQUIEREMENTS = '/pedagogical_requirements'
+const RIGHTS_OF_USE = '/rights_of_use'
+const ANOTATIONS = '/anotation'
 const CLASSIFICACION = '/classification'
-const PUBLICAR='/publicar'
+const PUBLICAR = '/publicar'
+const FILES_STATE = `${FILES}/state`
 
 const HEALTH = '/health'
 module.exports = {
@@ -35,5 +36,6 @@ module.exports = {
     RIGHTS_OF_USE,
     ANOTATIONS,
     CLASSIFICACION,
-    PUBLICAR
+    PUBLICAR,
+    FILES_STATE
 }

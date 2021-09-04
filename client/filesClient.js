@@ -6,6 +6,19 @@ const logger = require('../utils/logger')
 const filesClient = module.exports
 const log = logger.getLogger('filesClient')
 
+
+filesClient.getFilesByState = async (state) => {
+  log.info(`getFilesByState state=${state} `)     
+  const { data } = await axios.get(`${filesUrl}/lifecycle`, { params: { state } })
+  return(data)
+}
+
+filesClient.getMetadata = async (query) => {
+  log.info(`getMetadata query=${query} `)     
+  const { data } = await axios.get(`${filesUrl}/metadata`, { params: query })
+  return(data)
+}
+
 filesClient.getFilesByMail = async (email) => {
     log.info(`getFilesByMail email=${email} `)     
     const { data } = await axios.get(`${filesUrl}/metadata`, { params: { email } })
