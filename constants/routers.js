@@ -15,7 +15,16 @@ const RIGHTS_OF_USE = '/rights_of_use'
 const ANOTATIONS = '/anotation'
 const CLASSIFICACION = '/classification'
 const PUBLICAR = '/publicar'
+const PUBLICAR_CONTAR = '/publicar/contar'
 const FILES_STATE = `${FILES}/state`
+const RIGHTS_OF_USE_CONTAR = '/rights_of_use/contar'
+const ANOTATIONS_CONTAR = '/anotation/contar'
+const CLASSIFICACION_CONTAR = '/classification/contar'
+const LIFECYCLE_CONTAR = '/lifecycle/contar'
+const TECHNICAL_REQUIEREMENTS_CONTAR = '/technical_requirements/contar'
+const PEDAGOGICAL_REQUIEREMENTS_CONTAR = '/pedagogical_requirements/contar'
+const GENERAL_CONTAR = `${FILES}/general/contar`
+const USERS_CONTAR = '/users/contar'
 
 const HEALTH = '/health'
 module.exports = {
@@ -37,5 +46,14 @@ module.exports = {
     ANOTATIONS,
     CLASSIFICACION,
     PUBLICAR,
-    FILES_STATE
+    PUBLICAR_CONTAR,
+    FILES_STATE,
+    RIGHTS_OF_USE_CONTAR,
+    ANOTATIONS_CONTAR,
+    CLASSIFICACION_CONTAR,
+    LIFECYCLE_CONTAR,
+    TECHNICAL_REQUIEREMENTS_CONTAR,
+    PEDAGOGICAL_REQUIEREMENTS_CONTAR,
+    GENERAL_CONTAR,
+    USERS_CONTAR,
 }

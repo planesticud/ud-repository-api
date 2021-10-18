@@ -119,11 +119,28 @@ router.put(routers.PUBLICAR, wrap(publicarController.updatePublicar))
 
 router.delete(routers.PUBLICAR, wrap(publicarController.deletePublicar))
 
-// hh//
+
+router.get(routers.PUBLICAR_CONTAR, wrap(publicarController.getPublicarContar))
+
+router.get(routers.GENERAL_CONTAR, wrap(filesController.listGeneralContar))
+
+router.get(routers.LIFECYCLE_CONTAR, wrap(filesController.listLifecycleContar))
+
+router.get(routers.TECHNICAL_REQUIEREMENTS_CONTAR, wrap(filesController.listTechnicalRequirementsContar))
+
+router.get(routers.PEDAGOGICAL_REQUIEREMENTS_CONTAR, wrap(filesController.listPedagogicalRequirementsContar))
+
+router.get(routers.RIGHTS_OF_USE_CONTAR, wrap(filesController.listRightsOfUseContar))
+
+router.get(routers.ANOTATIONS_CONTAR, wrap(filesController.listAnotationContar))
+
+router.get(routers.CLASSIFICACION_CONTAR, wrap(filesController.listClassificationContar))
+
+router.get(routers.USERS_CONTAR, wrap(usersController.listUsersContar))
 
 router.get(routers.HEALTH, wrap(async (req, res) => {
-    res.status(OK).json({ message: 'OK' })
-  }))
+  res.status(OK).json({ message: 'OK' })
+}))
 
 
 module.exports = router
