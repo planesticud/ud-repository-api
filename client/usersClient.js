@@ -35,3 +35,9 @@ usersClient.addUsers = async (user) => {
     const { data } = await axios.delete(`${usersUrl}/users`, { params: { id } })
     return(data)
   }
+  
+  usersClient.getUsersContar = async (params) => {
+    log.info(`getUsersContar params=${params} `)     
+    const { data } = await axios.get(`${usersUrl}/users/contar`, { params:params })
+    return(data)
+  }

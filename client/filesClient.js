@@ -253,3 +253,51 @@ filesClient.deleteClassification = async (id) => {
   const { data } = await axios.delete(`${filesUrl}/classification`, { params: { id } })
   return(data)
 }
+
+filesClient.getGeneralContar = async (query) => {
+  log.info(`getGeneralContar query=${query} `)     
+  const { data } = await axios.get(`${filesUrl}/general/contar`, { params: query })
+  return(data)
+}
+
+filesClient.getMetadataContar = async (query) => {
+  log.info(`getMetadataContar query=${query} `)     
+  const { data } = await axios.get(`${filesUrl}/metadata/contar`, { params: query })
+  return(data)
+}
+
+filesClient.getLifecycleContar = async (query) => {
+  log.info(`getLifecycleContar query=${query} `)     
+  const { data } = await axios.get(`${filesUrl}/lifecycle/contar`, { params: query })
+  return(data)
+}
+
+filesClient.getTechnicalRequirementsContar = async (query) => {
+  log.info(`getTechnicalRequirementsContar query=${query} `)     
+  const { data } = await axios.get(`${filesUrl}/technical_requirements/contar`, { params: query })
+  return(data)
+}
+
+filesClient.getPedagogicalRequirementsContar = async (query) => {
+  log.info(`getPedagogicalRequirementsContar query=${query} `)     
+  const { data } = await axios.get(`${filesUrl}/pedagogical_requirements/contar`, { params: query })
+  return(data)
+}
+
+filesClient.getRightsOfUseContar = async (query) => {
+  log.info(`getRightsOfUseContar query=${query} `)     
+  const { data } = await axios.get(`${filesUrl}/rights_of_use/contar`, { params: query })
+  return(data)
+}
+
+filesClient.getAnotationContar = async (query) => {
+  log.info(`getAnotationContar query=${query} `)     
+  const { data } = await axios.get(`${filesUrl}/anotation/contar`, { params: query })
+  return(data)
+}
+
+filesClient.getClassificationContar = async (query) => {
+  log.info(`getClassificationContar query=${query} `)     
+  const { data } = await axios.get(`${filesUrl}/classification/contar`, { params: query })
+  return(data)
+}

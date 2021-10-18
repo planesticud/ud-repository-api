@@ -6,6 +6,13 @@ const logger = require('../utils/logger')
 const publicarClient = module.exports
 const log = logger.getLogger('publicarClient')
 
+publicarClient.getPublicarContar = async (params) => {
+    log.info(`getPublicarContar params=${params} `)
+    const { data } = await axios.get(`${publicarUrl}/publicar/contar`,{ params:params })
+    //console.log("contar:"+data)
+    return (data)
+}
+
 publicarClient.getPublicarById = async (id) => {
     log.info(`getPublicarById id=${id} `)
     const { data } = await axios.get(`${publicarUrl}/publicar`, { params: { id } })
