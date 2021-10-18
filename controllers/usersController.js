@@ -30,3 +30,9 @@ usersController.deleteUsers = async (req, res) => {
   const user = await usersClient.deleteUsers(id)
   res.json(user)
 }
+
+usersController.listUsersContar = async (req, res) => {
+  const { query } = req
+  const user = await usersClient.getUsersContar(query)
+  res.json(user)
+}

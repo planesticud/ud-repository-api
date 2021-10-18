@@ -299,33 +299,31 @@ filesController.uploadFiles = async (req, res) => {
     log.info('createFiles')
 
     if (req.files) {
-
         const file = req.files.file
-
         log.info(`upload file=${file.name}`)
         await file.mv(`./tmp/${file.name}`)
         const fileType = mime.lookup(file.name)
         log.info(`file type= ${fileType}`)
         let url = ''
-        if (fileType === 'application/zip') {
-            uploadScorm(file.name, './tmp')
-            url = `${urlS3Base}/${file.name.slice(0, -4)}/story.html`
-            log.info(`upload file to s3=${url}`)
-            res.json({
+        /*  if (fileType === 'application/zip') {
+              uploadScorm(file.name, './tmp')
+              url = `${urlS3Base}/${file.name.slice(0, -4)}/story.html`
+              log.info(`upload file to s3=${url}`)
+              res.json({
+                  url: url,
+                  size: file,
+                  format: fileType
+              })
+          } else {*/
+        url = uploadFile(file.name)
+        log.info(`upload file to s3=${url}`)
+        res.json(
+            {
                 url: url,
                 size: file,
                 format: fileType
             })
-        } else {
-            url = uploadFile(file.name)
-            log.info(`upload file to s3=${url}`)
-            res.json(
-                {
-                    url: url,
-                    size: file,
-                    format: fileType
-                })
-        }
+        // }
 
     } else {
         log.error('file not found')
@@ -545,4 +543,47 @@ filesController.deleteClassification = async (req, res) => {
     const { query: { id } } = req
     const classification = await filesClient.deleteClassification(id)
     res.json(classification)
+}
+
+
+filesController.listClassificationContar = async (req, res) => {
+    const { query } = req
+    const classification = await filesClient.getClassificationContar(query)
+    res.json(classification)
+}
+
+filesController.listAnotationContar = async (req, res) => {
+    const { query } = req
+    const anotation = await filesClient.getAnotationContar(query)
+    res.json(anotation)
+}
+
+filesController.listRightsOfUseContar = async (req, res) => {
+    const { query } = req
+    const rightsOfUse = await filesClient.getRightsOfUseContar(query)
+    res.json(rightsOfUse)
+}
+
+filesController.listPedagogicalRequirementsContar = async (req, res) => {
+    const { query } = req
+    const pedagogicalRequirements = await filesClient.getPedagogicalRequirementsContar(query)
+    res.json(pedagogicalRequirements)
+}
+
+filesController.listTechnicalRequirementsContar = async (req, res) => {
+    const { query } = req
+    const technicalRequirements = await filesClient.getTechnicalRequirementsContar(query)
+    res.json(technicalRequirements)
+}
+
+filesController.listLifecycleContar = async (req, res) => {
+    const { query } = req
+    const lifecycle = await filesClient.getLifecycleContar(query)
+    res.json(lifecycle)
+}
+
+filesController.listGeneralContar = async (req, res) => {
+    const { query } = req
+    const general = await filesClient.getGeneralContar(query)
+    res.json(general)
 }

@@ -30,3 +30,9 @@ publicarController.deletePublicar = async (req, res) => {
     const publica = await publicarClient.deletePublicar(id)
     res.json(publica)
 }
+
+publicarController.getPublicarContar = async (req, res) => {
+    const { query } = req
+    const publica = await publicarClient.getPublicarContar(query)
+    res.json(publica)
+}
