@@ -25,7 +25,8 @@ const TECHNICAL_REQUIEREMENTS_CONTAR = '/technical_requirements/contar'
 const PEDAGOGICAL_REQUIEREMENTS_CONTAR = '/pedagogical_requirements/contar'
 const GENERAL_CONTAR = `${FILES}/general/contar`
 const USERS_CONTAR = '/users/contar'
-const USERS_CONTAR = '/users/contar'
+
+const STADISTICS = '/stadistics'
 
 const HEALTH = '/health'
 module.exports = {
