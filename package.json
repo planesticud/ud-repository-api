@@ -24,7 +24,7 @@
   "homepage": "https://github.com/damillano93/ud-repository-api#readme",
   "dependencies": {
     "aws-sdk": "^2.755.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.4",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "events": "^3.2.0",
@@ -40,6 +40,7 @@
     "path": "^0.12.7",
     "rimraf": "^3.0.2",
     "s3-folder-upload": "^2.3.1",
-    "unzipper": "^0.10.11"
+    "unzipper": "^0.10.11",
+    "vue-axios": "^3.3.7"
   }
 }

@@ -16,6 +16,7 @@ const ANOTATIONS = '/anotation'
 const CLASSIFICACION = '/classification'
 const PUBLICAR = '/publicar'
 const FILES_STATE = `${FILES}/state`
+const STADISTICS = '/stadistics'
 
 const HEALTH = '/health'
 module.exports = {
@@ -37,5 +38,6 @@ module.exports = {
     ANOTATIONS,
     CLASSIFICACION,
     PUBLICAR,
-    FILES_STATE
+    FILES_STATE,
+    STADISTICS
 }

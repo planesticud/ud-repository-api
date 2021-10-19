@@ -1,18 +1,32 @@
 const express = require('express')
 const passport = require('passport')
 
-const { OK } = require('http-status-codes')
+const {
+  OK
+} = require('http-status-codes')
 
 const wrap = require('../wrap.js')
-const { routers } = require('../constants')
+const {
+  routers
+} = require('../constants')
 const auth = require('../auth/validateToken')
-const { apiController, filesController, usersController, publicarController } = require('../controllers')
+const {
+  apiController,
+  filesController,
+  usersController,
+  publicarController,
+  stadisticsController
+} = require('../controllers')
 
 const router = express.Router()
 
-router.get(routers.CALLBACK, passport.authenticate('google', { scope: ['email', 'profile'] }), wrap(apiController.callback))
+router.get(routers.CALLBACK, passport.authenticate('google', {
+  scope: ['email', 'profile']
+}), wrap(apiController.callback))
 
-router.get(routers.GOOGLE, passport.authenticate('google', { scope: ['email', 'profile'] }), (req, res) => { });
+router.get(routers.GOOGLE, passport.authenticate('google', {
+  scope: ['email', 'profile']
+}), (req, res) => { });
 
 router.post(routers.UPLOAD, wrap(filesController.uploadFiles))
 
@@ -119,11 +133,22 @@ router.put(routers.PUBLICAR, wrap(publicarController.updatePublicar))
 
 router.delete(routers.PUBLICAR, wrap(publicarController.deletePublicar))
 
+
+router.get(routers.STADISTICS, wrap(stadisticsController.listStadistics))
+
+router.post(routers.STADISTICS, wrap(stadisticsController.addStadistics))
+
+router.put(routers.STADISTICS, wrap(stadisticsController.updateStadistics))
+
+router.delete(routers.STADISTICS, wrap(stadisticsController.deleteStadistics))
 // hh//
 
+
 router.get(routers.HEALTH, wrap(async (req, res) => {
-    res.status(OK).json({ message: 'OK' })
-  }))
+  res.status(OK).json({
+    message: 'OK'
+  })
+}))
 
 
 module.exports = router

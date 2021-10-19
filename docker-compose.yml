@@ -4,13 +4,16 @@ networks:
 
 services:
   ud-repository-api:
-     image: planesticud/ud-repository-api
+     #image: planesticud/ud-repository-api
+     build: .
      container_name: ud-repository-api
      restart: on-failure
      env_file:
         - .env
      networks:
         - campus_virtual
+     ports:
+        - "3005:80" 
      labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ud-repository-api.rule=Host(`apirepository.planestic.udistrital.edu.co`) && PathPrefix(`/api`)"

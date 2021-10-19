@@ -25,7 +25,6 @@ app.use(fileUpload({
 
 app.use(routes)
 
-
 app.listen(port, () => {
     log.info(`servidor en puerto ${port}`)
 })
