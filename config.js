@@ -11,6 +11,7 @@ const {
     URL_S3_BASE
 } = process.env
 const PUBLICAR_URL ="http://ud-repository-publicar"
+const STADISTICS_URL ="http://ud-repository-stadistics"
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID
 const secretAccessKey  = process.env.AWS_SECRET_ACCESS_KEY
 const  region = process.env.AWS_DEFAULT_REGION
@@ -31,6 +32,7 @@ module.exports={
     usersUrl: USERS_URL,
     filesUrl: FILES_URL,
     publicarUrl: PUBLICAR_URL,
+    stadisticsUrl: STADISTICS_URL,
     googleUrlToken: GOOGLE_URL_TOKEN,
     bucketName: BUCKET_NAME,
     acl: ACL,

@@ -6,7 +6,7 @@ const { OK } = require('http-status-codes')
 const wrap = require('../wrap.js')
 const { routers } = require('../constants')
 const auth = require('../auth/validateToken')
-const { apiController, filesController, usersController, publicarController } = require('../controllers')
+const { apiController, filesController, usersController, publicarController, stadisticsController } = require('../controllers')
 
 const router = express.Router()
 
@@ -137,6 +137,14 @@ router.get(routers.ANOTATIONS_CONTAR, wrap(filesController.listAnotationContar))
 router.get(routers.CLASSIFICACION_CONTAR, wrap(filesController.listClassificationContar))
 
 router.get(routers.USERS_CONTAR, wrap(usersController.listUsersContar))
+
+router.get(routers.STADISTICS, wrap(stadisticsController.listStadistics))
+
+router.post(routers.STADISTICS, wrap(stadisticsController.addStadistics))
+
+router.put(routers.STADISTICS, wrap(stadisticsController.updateStadistics))
+
+router.delete(routers.STADISTICS, wrap(stadisticsController.deleteStadistics))
 
 router.get(routers.HEALTH, wrap(async (req, res) => {
   res.status(OK).json({ message: 'OK' })
