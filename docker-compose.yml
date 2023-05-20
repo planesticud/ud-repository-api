@@ -1,6 +1,6 @@
 version: '3'
 networks:
- campus_virtual:
+ dev_planestic:
 
 services:
   ud-repository-api:
@@ -10,7 +10,7 @@ services:
      env_file:
         - .env
      networks:
-        - campus_virtual
+        - dev_planestic
      labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ud-repository-api.rule=Host(`rdigital.planestic.udistrital.edu.co`) && PathPrefix(`/api`)"
@@ -20,5 +20,5 @@ services:
       - "traefik.http.routers.ud-repository-api.tls.certresolver=le"
       - "traefik.http.services.ud-repository-api.loadbalancer.server.port=80"           
 networks:
-  campus_virtual:
+  dev_planestic:
     external: true
