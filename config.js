@@ -5,13 +5,13 @@ const {
     CALLBACK_URL,
     USERS_URL,
     FILES_URL,
+    PUBLICAR_URL,
+    STADISTICS_URL,
     GOOGLE_URL_TOKEN,
     BUCKET_NAME,
     ACL,
     URL_S3_BASE
 } = process.env
-const PUBLICAR_URL ="http://ud-repository-publicar"
-const STADISTICS_URL ="http://ud-repository-statistics"
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID
 const secretAccessKey  = process.env.AWS_SECRET_ACCESS_KEY
 const  region = process.env.AWS_DEFAULT_REGION

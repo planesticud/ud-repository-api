@@ -6,7 +6,7 @@ const passport = require('passport')
 const fileUpload = require('express-fileupload')
 
 const googleStratergy = require('./auth/googleStrategy')
-
+const microsoftStratergy = require('./auth/microsoft_strategy')
 const logger = require('./utils/logger')
 const { port } = require('./config')
 const { routes } = require('./routers')

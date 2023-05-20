@@ -14,6 +14,8 @@ router.get(routers.CALLBACK, passport.authenticate('google', { scope: ['email', 
 
 router.get(routers.GOOGLE, passport.authenticate('google', { scope: ['email', 'profile'] }), (req, res) => { });
 
+
+
 router.post(routers.UPLOAD, wrap(filesController.uploadFiles))
 
 router.get(routers.FILES, wrap(filesController.listFilesById))
@@ -145,6 +147,12 @@ router.post(routers.STADISTICS, wrap(stadisticsController.addStadistics))
 router.put(routers.STADISTICS, wrap(stadisticsController.updateStadistics))
 
 router.delete(routers.STADISTICS, wrap(stadisticsController.deleteStadistics))
+
+router.get(routers.MICROSOFT,
+  passport.authenticate('microsoft', { prompt: 'select_account', }));
+
+router.get(routers.MICROSOFT_CALLBACK, passport.authenticate('microsoft', { failureRedirect: '/login' }), wrap(apiController.callbackMicrosoft));
+
 
 router.get(routers.HEALTH, wrap(async (req, res) => {
   res.status(OK).json({ message: 'OK' })

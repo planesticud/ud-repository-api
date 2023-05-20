@@ -6,6 +6,8 @@ const FILES_ALL = `${FILES}/all`
 const GENERAL = `${FILES}/general`
 const UPLOAD = '/upload'
 const CALLBACK = '/callback'
+const MICROSOFT = '/microsoft'
+const MICROSOFT_CALLBACK = `${MICROSOFT}${CALLBACK}`
 const GOOGLE = '/google'
 const LIFECYCLE = '/lifecycle'
 const META_METADATA = '/meta_metadata'
@@ -58,5 +60,7 @@ module.exports = {
     PEDAGOGICAL_REQUIEREMENTS_CONTAR,
     GENERAL_CONTAR,
     USERS_CONTAR,
-    STADISTICS
+    STADISTICS,
+    MICROSOFT,
+    MICROSOFT_CALLBACK
 }
