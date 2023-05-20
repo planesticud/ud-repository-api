@@ -13,7 +13,7 @@ services:
         - campus_virtual
      labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ud-repository-api.rule=Host(`apirepository.planestic.udistrital.edu.co`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.ud-repository-api.rule=Host(`rdigital.planestic.udistrital.edu.co`) && PathPrefix(`/api`)"
       - "traefik.http.routers.ud-repository-api.middlewares=ud-repository-api-stripprefix"
       - "traefik.http.middlewares.ud-repository-api-stripprefix.stripprefix.prefixes=/api"
       - "traefik.http.routers.ud-repository-api.tls=true"
