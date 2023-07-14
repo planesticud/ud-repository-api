@@ -6,7 +6,7 @@ const { OK } = require('http-status-codes')
 const wrap = require('../wrap.js')
 const { routers } = require('../constants')
 const auth = require('../auth/validateToken')
-const { apiController, filesController, usersController, publicarController, stadisticsController } = require('../controllers')
+const { apiController, filesController, usersController, publicarController, stadisticsController, rolesController } = require('../controllers')
 
 const router = express.Router()
 
@@ -147,6 +147,14 @@ router.post(routers.STADISTICS, wrap(stadisticsController.addStadistics))
 router.put(routers.STADISTICS, wrap(stadisticsController.updateStadistics))
 
 router.delete(routers.STADISTICS, wrap(stadisticsController.deleteStadistics))
+
+router.get(routers.ROLES, wrap(rolesController.listRoles))
+
+router.post(routers.ROLES, wrap(rolesController.addRoles))
+
+router.put(routers.ROLES, wrap(rolesController.updateRoles))
+
+router.delete(routers.ROLES, wrap(rolesController.deleteRoles))
 
 router.get(routers.MICROSOFT,
   passport.authenticate('microsoft', { prompt: 'select_account', }));

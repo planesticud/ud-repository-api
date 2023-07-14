@@ -1,5 +1,6 @@
 const AUTH = '/auth'
 const USERS = '/users'
+const ROLES = '/roles'
 const FILES = '/files'
 const FILES_MAIL = `${FILES}/email`
 const FILES_ALL = `${FILES}/all`
@@ -62,5 +63,6 @@ module.exports = {
     USERS_CONTAR,
     STADISTICS,
     MICROSOFT,
-    MICROSOFT_CALLBACK
+    MICROSOFT_CALLBACK,
+    ROLES
 }
