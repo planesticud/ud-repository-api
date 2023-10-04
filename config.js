@@ -10,7 +10,11 @@ const {
     GOOGLE_URL_TOKEN,
     BUCKET_NAME,
     ACL,
-    URL_S3_BASE
+    URL_S3_BASE,
+    MAIL_HOST,
+    MAIL_USER,
+    MAIL_PASSWORD,
+    MAIL_FROM
 } = process.env
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID
 const secretAccessKey  = process.env.AWS_SECRET_ACCESS_KEY
@@ -37,5 +41,9 @@ module.exports={
     bucketName: BUCKET_NAME,
     acl: ACL,
     urlS3Base: URL_S3_BASE,
-    credentials
+    credentials,
+    mailHost: MAIL_HOST,
+    mailUser:MAIL_USER,
+    mailPassword:MAIL_PASSWORD,
+    mailFrom:MAIL_FROM
 }

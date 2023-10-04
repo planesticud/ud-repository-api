@@ -31,6 +31,7 @@ const USERS_CONTAR = '/users/contar'
 
 const STADISTICS = '/stadistics'
 
+const COLABORATOR = '/colaborator'
 const HEALTH = '/health'
 module.exports = {
     AUTH,
@@ -64,5 +65,6 @@ module.exports = {
     STADISTICS,
     MICROSOFT,
     MICROSOFT_CALLBACK,
-    ROLES
+    ROLES,
+    COLABORATOR
 }

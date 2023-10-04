@@ -166,5 +166,7 @@ router.get(routers.HEALTH, wrap(async (req, res) => {
   res.status(OK).json({ message: 'OK' })
 }))
 
+router.post(routers.COLABORATOR, wrap(usersController.createColaborador))
+
 
 module.exports = router
